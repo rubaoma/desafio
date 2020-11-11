@@ -14,21 +14,23 @@ Criar um aplicativo para consultar a [API do GitHub](https://developer.github.co
   * Cada item da lista deve exibir Nome / Foto do autor do PR, Título do PR, Data do PR e Body do PR
   * Ao tocar em um item, deve abrir no browser a página do Pull Request em questão
 
-### **A solução DEVE conter** ##
+### **Serão observados** ##
 
-* Padrão arquitetural
+* Padrão arquitetural (Sugestão: MVVM)
+* Modularização
 * Material Design
 * Framework para comunicação com API e chamadas assíncronas
 * Testes
 * Libraries do Jetpack
+* Guidelines desenvolvimento Android
+* Injeção de dependências
 
 ### **Sugestões** ###
 
 * Retrofit | Volley 
 * Picasso | Universal Image Loader | Glide
 * Espresso | Robotium | Robolectric
-* RXJava
-* Coroutines
+* RXJava | Coroutines
 * Live data
 * Conceitos Clean Code
 * ref: `https://developer.android.com/topic/libraries/architecture`
