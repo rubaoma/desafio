@@ -7,7 +7,7 @@ Criar um aplicativo para consultar a [API do GitHub](https://developer.github.co
 ### **Deve conter** ###
 
 - __Lista de repositórios__. Exemplo de chamada na API: `https://api.github.com/search/repositories?q=language:Java&sort=stars&page=1`
-  * Paginação na tela de lista, com endless scroll / scroll infinito (incrementando o parâmetro `page`).
+  * Paginação na tela de lista, com Paging library (jetpack) ref: `https://developer.android.com/topic/libraries/architecture/paging`.
   * Cada repositório deve exibir Nome do repositório, Descrição do Repositório, Nome / Foto do autor, Número de Stars, Número de Forks
   * Ao tocar em um item, deve levar a lista de Pull Requests do repositório
 - __Pull Requests de um repositório__. Exemplo de chamada na API: `https://api.github.com/repos/<criador>/<repositório>/pulls`
@@ -15,25 +15,24 @@ Criar um aplicativo para consultar a [API do GitHub](https://developer.github.co
   * Ao tocar em um item, deve abrir no browser a página do Pull Request em questão
 
 ### **A solução DEVE conter** ##
-* Sistema de build Gradle
-* Mapeamento JSON -> Objeto (GSON / Jackson / Moshi / etc)
+
+* Padrão arquitetural
 * Material Design
-
-### **Ganha + pontos se conter** ###
-
-* Framework para comunicação com API
-* Testes no projeto (unitários e por tela)
-* Testes funcionais (que naveguem pelo aplicativo como casos de uso)
-* Cache de imagens e da API
-* Suportar mudanças de orientação das telas sem perder estado
+* Framework para comunicação com API e chamadas assíncronas
+* Testes
+* Libraries do Jetpack
 
 ### **Sugestões** ###
-
-As sugestões de bibliotecas fornecidas são só um guideline, sintam-se a vontade para usar diferentes e nos surpreenderem. O importante de fato é que os objetivos macros sejam atingidos. =)
 
 * Retrofit | Volley 
 * Picasso | Universal Image Loader | Glide
 * Espresso | Robotium | Robolectric
+* RXJava
+* Coroutines
+* Live data
+* Conceitos Clean Code
+* ref: `https://developer.android.com/topic/libraries/architecture`
+
 
 ### **OBS** ###
 
