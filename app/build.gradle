@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.rubdev.myapplication"
-        minSdkVersion 24
+        minSdkVersion 28
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -34,6 +34,18 @@ android {
 }
 
 dependencies {
+    //Paging
+    def paging_version = "2.1.2"
+
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version" // For Kotlin use paging-runtime-ktx
+
+    // alternatively - without Android dependencies for testing
+    testImplementation "androidx.paging:paging-common-ktx:$paging_version" // For Kotlin use paging-common-ktx
+
+    // optional - RxJava support
+//    implementation "androidx.paging:paging-rxjava2-ktx:$paging_version" // For Kotlin use paging-rxjava2-ktx
+    
+
     //Room
     def room_version = "2.2.5"
 
