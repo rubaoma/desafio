@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="name_repository">Nome Repositório</string>
+    <string name="description_repo">Descrição do repositorio Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit.</string>
+    <string name="number_fork">000</string>
+    <string name="number_stars">000</string>
+    <string name="username">username</string>
+    <string name="name_surname">Nome Sobrenome</string>
 </resources>

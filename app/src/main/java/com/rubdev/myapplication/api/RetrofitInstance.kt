@@ -1,4 +1,4 @@
-package com.rubdev.myapplication.Repository
+package com.rubdev.myapplication.api
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
