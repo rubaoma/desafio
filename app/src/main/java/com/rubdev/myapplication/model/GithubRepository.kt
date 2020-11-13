@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class GithubRepository(
     @field:SerializedName("id")
     val id: Long,
-    @field:SerializedName("name")
+    @field:SerializedName("login")
     val authorName: String,
     @field:SerializedName("full_name")
     val fullname: String,

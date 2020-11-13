@@ -2,6 +2,7 @@ package com.rubdev.myapplication.data
 
 import com.rubdev.myapplication.api.GitHubApiService
 import com.rubdev.myapplication.api.IN_QUALIFIER
+import com.rubdev.myapplication.api.RetrofitInstance
 import com.rubdev.myapplication.model.GithubRepository
 import com.rubdev.myapplication.model.RepoResponse
 import com.rubdev.myapplication.model.RepositorySearchResult
@@ -11,10 +12,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import retrofit2.HttpException
 import java.io.IOException
-import
 
 @ExperimentalCoroutinesApi
-class GitRepository(private val apiService: GitHubApiService) {
+class GitRepository(private val apiService: RetrofitInstance) {
 
     private val inMemoryCache = mutableListOf<GithubRepository>()
     private val searhResults = ConflatedBroadcastChannel<RepoResponse>()
