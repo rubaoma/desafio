@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val call = RetrofitInstance.servideApi().getAllJavaRepositories()
-        call.enqueue(retrofit2.Callback<List<GithubRepo>>)
+//        val call = RetrofitInstance.servideApi().getAllJavaRepositories()
+//        call.enqueue(retrofit2.Callback<List<GithubRepo>>)
     }
 }

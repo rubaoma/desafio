@@ -20,11 +20,10 @@ class RepoGitViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private var githubRepo: GithubRepo? = null
 
-    init {
-        view.setOnClickListener {
-//            val intent = Intent(this, PullRequestListActivity::class.java).apply{
-
-        }
+    init { //TODO implementar
+//        view.setOnClickListener {
+//            val intent = Intent(this, PullRequestListActivity::class.java)
+//        } startActivity(intent)
     }
 
     fun bind(gitRepo: GithubRepo?) {
@@ -41,7 +40,7 @@ class RepoGitViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     }
 
-    private fun showGitRepoData(gitRepo: GithubRepo){
+    private fun showGitRepoData(gitRepo: GithubRepo) {
 
         this.githubRepo = gitRepo
         userNameRepo.text = gitRepo.repoName
@@ -59,7 +58,7 @@ class RepoGitViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun create(parent: ViewGroup): RepoGitViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.repository_layout, parent, false)
-            return  RepoGitViewHolder(view)
+            return RepoGitViewHolder(view)
         }
     }
 
