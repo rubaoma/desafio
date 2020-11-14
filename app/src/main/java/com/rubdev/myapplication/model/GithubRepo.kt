@@ -2,13 +2,13 @@ package com.rubdev.myapplication.model
 
 import com.google.gson.annotations.SerializedName
 
-data class GithubRepository(
+data class GithubRepo(
     @field:SerializedName("id")
     val id: Long,
-    @field:SerializedName("login")
-    val authorName: String,
+    @field:SerializedName("name")
+    val repoName: String,
     @field:SerializedName("full_name")
-    val fullname: String,
+    val nameSurname: String,
     @field:SerializedName("description")
     val description: String,
     @field:SerializedName("starsgazers_count")
@@ -18,5 +18,9 @@ data class GithubRepository(
     @field:SerializedName("html_url")
     val url: String,
     @field:SerializedName("avatar_url")
-    val avatar: String
+    val avatar: String,
+    @field:SerializedName("pull_url")
+    val pullUrl: String,
+
+
 )

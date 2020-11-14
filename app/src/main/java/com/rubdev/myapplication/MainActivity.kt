@@ -3,8 +3,7 @@ package com.rubdev.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.rubdev.myapplication.api.RetrofitInstance
-import com.rubdev.myapplication.model.GithubRepository
-import javax.security.auth.callback.Callback
+import com.rubdev.myapplication.model.GithubRepo
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +15,6 @@ class MainActivity : AppCompatActivity() {
 
 
         val call = RetrofitInstance.servideApi().getAllJavaRepositories()
-        call.enqueue(retrofit2.Callback<List<GithubRepository>>)
+        call.enqueue(retrofit2.Callback<List<GithubRepo>>)
     }
 }

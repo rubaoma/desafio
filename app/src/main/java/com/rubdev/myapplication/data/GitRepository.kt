@@ -3,7 +3,7 @@ package com.rubdev.myapplication.data
 import com.rubdev.myapplication.api.GitHubApiService
 import com.rubdev.myapplication.api.IN_QUALIFIER
 import com.rubdev.myapplication.api.RetrofitInstance
-import com.rubdev.myapplication.model.GithubRepository
+import com.rubdev.myapplication.model.GithubRepo
 import com.rubdev.myapplication.model.RepoResponse
 import com.rubdev.myapplication.model.RepositorySearchResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -16,7 +16,7 @@ import java.io.IOException
 @ExperimentalCoroutinesApi
 class GitRepository(private val apiService: RetrofitInstance) {
 
-    private val inMemoryCache = mutableListOf<GithubRepository>()
+    private val inMemoryCache = mutableListOf<GithubRepo>()
     private val searhResults = ConflatedBroadcastChannel<RepoResponse>()
     private var lastRequestedPage = GITHUB_STARTING_PAGE_INDEX
     private var isRequestInProgress = false
@@ -57,10 +57,10 @@ class GitRepository(private val apiService: RetrofitInstance) {
         return successful
     }
 
-    private fun reposByName(query: String): List<GithubRepository> {
+    private fun reposByName(query: String): List<GithubRepo> {
         return inMemoryCache.filter {
             it.authorName.contains(query, true) || (it.description != null && it.description.contains(query,true))
-        }.sortedWith(compareByDescending<GithubRepository> { it.stars }.thenBy { it.authorName })
+        }.sortedWith(compareByDescending<GithubRepo> { it.stars }.thenBy { it.authorName })
     }
     companion object{
         private const val NETWORK_PAGE_SIZE = 50

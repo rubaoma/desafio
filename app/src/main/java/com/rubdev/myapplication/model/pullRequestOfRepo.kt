@@ -3,7 +3,7 @@ package com.rubdev.myapplication.model
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
-data class pullRequestOfRepository(
+data class pullRequestOfRepo(
     @SerializedName("")
     val title: String,
     @SerializedName("")
