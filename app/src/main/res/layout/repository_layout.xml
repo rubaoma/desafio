@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="@string/number_fork"
+        android:text="@string/number_forks"
         android:textColor="#FFDF930B"
         app:layout_constraintStart_toEndOf="@+id/image_star"
         app:layout_constraintTop_toBottomOf="@+id/description_repo" />
@@ -68,7 +68,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-
         android:text="@string/number_stars"
         android:textColor="#FFDF930B"
         app:layout_constraintStart_toEndOf="@+id/image_fork"
@@ -108,15 +107,5 @@
         app:layout_constraintStart_toStartOf="@+id/username_repo"
         app:layout_constraintTop_toBottomOf="@+id/username_repo" />
 
-    <include
-        layout="@layout/gradient_shadow_layout"
-        android:layout_width="match_parent"
-        android:layout_below="@id/name_surname"
-        android:layout_height="3dp"
-        android:layout_marginStart="08dp"
-        android:layout_marginLeft="08dp"
-        android:layout_marginTop="08dp"
-        android:layout_marginEnd="08dp"
-        android:layout_marginRight="08dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

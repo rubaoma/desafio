@@ -1,11 +1,12 @@
-package com.rubdev.myapplication.model
+package com.rubdev.myapplication.api
 
 import com.google.gson.annotations.SerializedName
+import com.rubdev.myapplication.model.GithubRepo
 
-data class RepoResponse (
+data class GitRepoSearchResponse (
     @SerializedName("total_count")
     val total: Int = 0,
-    @SerializedName("items")
+    @SerializedName("itens")
     val items: List<GithubRepo> = emptyList(),
     val nextPage: Int? = null
 )

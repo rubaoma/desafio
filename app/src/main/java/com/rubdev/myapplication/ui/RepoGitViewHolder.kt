@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rubdev.myapplication.R
+import com.rubdev.myapplication.data.GitRepository
 import com.rubdev.myapplication.model.GithubRepo
 
 class RepoGitViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -33,7 +34,7 @@ class RepoGitViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             nameSurname.text = resources.getString(R.string.wait)
             description.visibility = View.GONE
             numberStars.text = resources.getString(R.string.number_stars)
-            numberForks.text = resources.getString(R.string.number_fork)
+            numberForks.text = resources.getString(R.string.number_forks)
         } else {
             showGitRepoData(gitRepo)
         }

@@ -1,27 +1,30 @@
 package com.rubdev.myapplication.data
 
-import com.rubdev.myapplication.api.GitHubApiService
+
 import com.rubdev.myapplication.api.IN_QUALIFIER
-import com.rubdev.myapplication.api.RetrofitInstance
+import com.rubdev.myapplication.api.ServicesApi
+import com.rubdev.myapplication.model.GitRepoSearchResult
 import com.rubdev.myapplication.model.GithubRepo
-import com.rubdev.myapplication.model.RepoResponse
-import com.rubdev.myapplication.model.RepositorySearchResult
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import retrofit2.HttpException
 import java.io.IOException
 
+private const val GITHUB_STARTING_PAGE_INDEX = 1
+
 @ExperimentalCoroutinesApi
-class GitRepository(private val apiService: RetrofitInstance) {
+class GitRepository(private val apiService: ServicesApi) {
 
     private val inMemoryCache = mutableListOf<GithubRepo>()
-    private val searhResults = ConflatedBroadcastChannel<RepoResponse>()
+    private val searhResults = ConflatedBroadcastChannel<GitRepoSearchResult>()
     private var lastRequestedPage = GITHUB_STARTING_PAGE_INDEX
     private var isRequestInProgress = false
 
-    suspend fun getSearchResultStream(query: String): Flow<RepoResponse> {
+    @FlowPreview
+    suspend fun getSearchResultStream(query: String): Flow<GitRepoSearchResult> {
         lastRequestedPage = 1
         inMemoryCache.clear()
         requestAndSaveData(query)
@@ -42,16 +45,17 @@ class GitRepository(private val apiService: RetrofitInstance) {
 
         val apiQuery = query + IN_QUALIFIER
         try {
-            val response = apiService.getAllJavaRepositories(apiQuery, lastRequestedPage, NETWORK_PAGE_SIZE)
-            val repos = response.items ?: emptyList()
+            val response =
+                apiService.getAllJavaRepositories(apiQuery, lastRequestedPage, NETWORK_PAGE_SIZE)
+            val repos = response.items
             inMemoryCache.addAll(repos)
             val reposByName = reposByName(query)
-            searhResults.offer(RepositorySearchResult.Success(reposByName))
+            searhResults.offer(GitRepoSearchResult.Success(reposByName))
             successful = true
-        }catch (exception: IOException){
-            searhResults.offer(RepositorySearchResult.Error(exception))
-        } catch (exception: HttpException){
-            searhResults.offer(RepositorySearchResult.Error(exception))
+        } catch (exception: IOException) {
+            searhResults.offer(GitRepoSearchResult.Error(exception))
+        } catch (exception: HttpException) {
+            searhResults.offer(GitRepoSearchResult.Error(exception))
         }
         isRequestInProgress = false
         return successful
@@ -59,10 +63,14 @@ class GitRepository(private val apiService: RetrofitInstance) {
 
     private fun reposByName(query: String): List<GithubRepo> {
         return inMemoryCache.filter {
-            it.authorName.contains(query, true) || (it.description != null && it.description.contains(query,true))
-        }.sortedWith(compareByDescending<GithubRepo> { it.stars }.thenBy { it.authorName })
+            it.repoName.contains(query, true) || (it.description.contains(
+                query,
+                true
+            ))
+        }.sortedWith(compareByDescending<GithubRepo> { it.stars }.thenBy { it.repoName })
     }
-    companion object{
+
+    companion object {
         private const val NETWORK_PAGE_SIZE = 50
     }
 }
